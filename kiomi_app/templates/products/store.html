@@ -1,12 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>store</title>
-</head>
-<body>
-    <h1>store</h1>
-</body>
-</html>
+{% extends 'index.html' %} 
+{% load static %} 
+{% block title %} Store {% endblock title %} 
+{% block body %}
+<div id="store">
+  <h2>Kiomi store</h2>
+	<div class="container">
+		<template>
+			<div class="row d-flex">
+				<store-card-product
+					v-for="a in [1,2,3,4,5,6,7,8]"
+					:key="a"
+				/>
+			</div>
+		</template>
+		<template>
+			<store-pagination/>
+		</template>
+	</div>
+</div>
+{% endblock body %} 
+{% block js %}
+	<!-- components -->
+	<script src="{% static 'components/StorePagination.js' %}"></script>
+	<script src="{% static 'components/StoreCardProduct.js' %}"></script>
+	<!-- main vue -->
+	<script src="{% static 'components/Store.js' %}"></script>
+{% endblock js %}
