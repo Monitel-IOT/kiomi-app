@@ -1,11 +1,18 @@
+const url = 'http://127.0.0.1:8000/api'
 Vue.component('store-card-product', {
   name: 'store-card-product',
-  template: /*html*/ `
+	props: {
+		product: {
+			type: Object,
+			default: () => {}
+		}
+	},
+  template:/*html*/`
 	<div class="card-product col-sm-12 col-md-6 col-lg-4">
 		<div class="card">
-			<img src="https://placeimg.com/640/480/animals/grayscale" class="card-img-top" alt="grayscale">
+			<img :src="'http://127.0.0.1:8000'+product.image" class="card-img-top" :alt="product.name">
       <div class="card-body">
- 		    <h5 class="card-title">Card title</h5>
+ 		    <h5 class="card-title">{{ product.name }}</h5>
   		  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   		  <a href="#" class="btn btn-primary">Go somewhere</a>
   		</div>

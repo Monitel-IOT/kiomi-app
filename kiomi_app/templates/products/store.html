@@ -8,8 +8,9 @@
 		<template>
 			<div class="row d-flex">
 				<store-card-product
-					v-for="a in [1,2,3,4,5,6,7,8]"
-					:key="a"
+					v-for="product in dbProducts"
+					:key="product.id"
+					:product="product"
 				/>
 			</div>
 		</template>
@@ -21,8 +22,9 @@
 {% endblock body %} 
 {% block js %}
 	<!-- components -->
-	<script src="{% static 'components/StorePagination.js' %}"></script>
-	<script src="{% static 'components/StoreCardProduct.js' %}"></script>
+	<script src="{% static 'js/components/StorePagination.js' %}"></script>
+	<script src="{% static 'js/components/StoreCardProduct.js' %}"></script>
 	<!-- main vue -->
-	<script src="{% static 'components/Store.js' %}"></script>
+	<script type="module" src="{% static 'js/components/Store.js' %}"></script>
+	<script type="module" src="{% static 'js/api.js' %}"></script>
 {% endblock js %}
