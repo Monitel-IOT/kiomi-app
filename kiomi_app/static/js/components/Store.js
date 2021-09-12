@@ -2,6 +2,7 @@
 
 import api from '../api.js'
 
+
 new Vue({
   delimiters: ['[[', ']]'],
   el: '#store',
@@ -13,6 +14,8 @@ new Vue({
   created() {
     api
       .getProducts()
-      .then((products) => this.dbProducts = products)
+      .then((products) => 
+      {console.log(products.results)
+      this.dbProducts = products})
   },
 })
