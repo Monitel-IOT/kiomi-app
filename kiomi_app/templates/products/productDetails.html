@@ -1,0 +1,18 @@
+{% extends 'index.html' %} 
+{% load static %} 
+{% block title %} Detalles {% endblock title %} 
+
+{% block body %}
+<div id="product-details">
+	<h2>Detalles de un producto</h2>
+	<p>[[ dbProductDetails.name ]]</p>
+	<p>[[ dbProductDetails.description ]]</p>
+	<p>[[ dbProductDetails.flavor ]]</p>
+</div>
+{% endblock body %}
+
+{% block js %}
+	<!-- main vue -->
+	<script type="module" src="{% static 'js/components/ProductDetails.js' %}"></script>
+	<script type="module" src="{% static 'js/api.js' %}"></script>
+{% endblock js %}

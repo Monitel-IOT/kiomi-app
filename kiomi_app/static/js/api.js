@@ -6,6 +6,15 @@ const getProducts = () => {
 		.then((res) => res)
 }
 
+/* Product Details */
+const getProductDetails = (id) => {
+	const endpoint = `${url}/products-detail/${id}/`
+	return fetch(endpoint)
+		.then((res) => res.json())
+		.then((res) => res)
+}
+
 export default {
-	getProducts
+	getProducts,
+	getProductDetails
 }
