@@ -1,13 +1,13 @@
 const url = 'http://127.0.0.1:8000/api'
 Vue.component('store-card-product', {
-  name: 'store-card-product',
+  	name: 'store-card-product',
 	props: {
 		product: {
 			type: Object,
 			default: () => {}
 		}
 	},
-  template:/*html*/`
+  	template:/*html*/`
 	<div class="card-product col-sm-12 col-md-6 col-lg-4">
 		<div class="card">
 			<img :src="product.image_1" class="card-img-top" :alt="product.name">

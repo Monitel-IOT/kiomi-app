@@ -1,8 +1,9 @@
 const url = 'http://127.0.0.1:8000/api'
 
-const getProducts = () => {
-	return fetch(`${url}/products/`)
-		.then((res) => res.json())
+const getProducts = (currentPage) => {
+	const endpoint = `${url}/products/?page=${currentPage}`
+	return fetch(endpoint)
+		.then((res) =>	res.json())
 		.then((res) => res)
 }
 
@@ -16,5 +17,5 @@ const getProductDetails = (id) => {
 
 export default {
 	getProducts,
-	getProductDetails
+	getProductDetails,
 }

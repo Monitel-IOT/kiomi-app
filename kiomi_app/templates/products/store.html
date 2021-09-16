@@ -14,15 +14,20 @@
 				/>
 			</div>
 		</template>
+
 		<template>
-			<store-pagination/>
+			<card-pagination
+				:next-pages="nextPages"
+				
+			/>
 		</template>
+			
 	</div>
 </div>
 {% endblock body %} 
 {% block js %}
 	<!-- components -->
-	<script src="{% static 'js/components/StorePagination.js' %}"></script>
+	<script src="{% static 'js/components/CardPagination.js' %}"></script>
 	<script src="{% static 'js/components/StoreCardProduct.js' %}"></script>
 	<!-- main vue -->
 	<script type="module" src="{% static 'js/components/Store.js' %}"></script>
