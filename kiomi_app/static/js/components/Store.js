@@ -8,34 +8,60 @@ new Vue({
   data() {
     return {
       dbProducts: [],
-      nextPages: "",
-    };
+      currentPage: 1,
+      totalPages:1,
+      arrPages:[],
+      showNextButton: false,
+      showPrevButton: false,
+    }
   },
-  created() {
-    const currentPage = 1;
-    const search = window.location.search;
-    const urlParam = new URLSearchParams(search);
-    //console.log("hola",search);
-    const page = parseInt(urlParam.get("page"));
-    if (search === "") {
-      const currentPage = 1;
-      api.getProducts(currentPage).then((products) => {
-        this.dbProducts = products;
-        const urlSplit = this.dbProducts.next.split("/");
-        this.nextPages = urlSplit[5];
-        //this.countProducts = products.count
-      });
-    } else {
-      const urlParam = new URLSearchParams(search);
-      //console.log("hola",search);
-      const page = parseInt(urlParam.get("page"));
-      const currentPage = page;
-      api.getProducts(currentPage).then((products) => {
-        this.dbProducts = products;
-        const urlSplit = this.dbProducts.next.split("/");
-        this.nextPages = urlSplit[5];
-        //this.countProducts = products.count
-      });
+
+  created() {   
+    api
+    .getProducts(this.currentPage)
+    .then((products) => {
+      this.dbProducts = products.results
+      
+      const numero = Math.ceil((products.count)/2);
+      this.totalPages = numero
+      
+      const arr = []
+      for (let i = 0; i<numero; i++) {
+        arr[i]=i+1; 
+      }
+      this.arrPages = arr
+      
+
+      this.showNextButton = false
+      this.showPrevButton = false
+      if (products.next) {
+        this.showNextButton = true
+      }
+
+      if (products.previous) {
+        this.showPrevButton = true
+    
+      }
+    })   
+  },
+  methods: {
+    loadNext() {
+      this.currentPage += 1
+      api.getProducts(this.currentPage)
+      .then((products) => {
+        this.dbProducts = products.results})
+    },
+    loadPrev() {
+      this.currentPage -= 1
+      api.getProducts(this.currentPage)
+      .then((products) => {
+        this.dbProducts = products.results})
+    },
+    loadCurrentPage(){
+      this.currentPage -= 1
+      api.getProducts(this.currentPage)
+      .then((products) => {
+        this.dbProducts = products.results})
     }
   },
 });

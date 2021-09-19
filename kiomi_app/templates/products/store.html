@@ -8,19 +8,26 @@
 		<template>
 			<div class="row d-flex">
 				<store-card-product
-					v-for="product in dbProducts.results"
+					v-for="product in dbProducts"
 					:key="product.id"
 					:product="product"
 				/>
 			</div>
 		</template>
 
-		<template>
-			<card-pagination
-				:next-pages="nextPages"
-				
-			/>
-		</template>
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				<li class="page-item" >
+					<a class="page-link" tabindex="-1" aria-disabled="true" @click="loadPrev()" >Previous</a>
+				</li>
+				<li class="page-item" >
+					<a class="page-item page-link" >[[currentPage]]</a>
+				</li>
+				<li class="page-item">
+					<a class="page-link" @click="loadNext()">Next</a>
+				</li>
+			</ul>
+		</nav>
 			
 	</div>
 </div>
