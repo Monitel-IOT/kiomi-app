@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-		'rest_framework',
-		'corsheaders',
+    'rest_framework',
+    'corsheaders',
     'products'
 ]
 
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'kiomi_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')], 
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -143,10 +143,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # static files
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static')
+    os.path.join(BASE_DIR, 'static')
 ]
 # images
 MEDIA_URL = '/images/'
 
 # url for images
-MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
+
+# Esto corrige un problema del browser que no permite el tipo MIME ("text/plain"):
+# Referencia: https://stackoverflow.com/questions/64013643/failed-to-load-module-script-the-server-responded-with-a-non-javascript-mime-ty
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type("application/javascript", ".js", True)
