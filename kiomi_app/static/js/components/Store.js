@@ -57,8 +57,8 @@ new Vue({
       .then((products) => {
         this.dbProducts = products.results})
     },
-    loadCurrentPage(){
-      this.currentPage -= 1
+    loadCurrentPage(page){
+      this.currentPage = page
       api.getProducts(this.currentPage)
       .then((products) => {
         this.dbProducts = products.results})

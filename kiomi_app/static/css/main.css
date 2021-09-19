@@ -4,3 +4,7 @@
 .card-product {
 	margin-bottom: 24px;
 }
+.page-item {
+	z-index: 999;
+	cursor: pointer;
+}

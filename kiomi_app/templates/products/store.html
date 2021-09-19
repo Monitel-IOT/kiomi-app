@@ -17,18 +17,18 @@
 
 		<nav aria-label="Page navigation example">
 			<ul class="pagination justify-content-center">
-				<li class="page-item" >
+				<li class="page-item" v-bind:class="[currentPage===1 ? 'disabled' :'']">
 					<a class="page-link" tabindex="-1" aria-disabled="true" @click="loadPrev()" >Previous</a>
 				</li>
-				<li class="page-item" >
-					<a class="page-item page-link" >[[currentPage]]</a>
+				<li class="page-item" v-for="page in arrPages" v-bind:class="[currentPage===page ? 'active' :'']">
+					<a class="page-link" @click="loadCurrentPage(page)">[[page]]</a>
 				</li>
-				<li class="page-item">
+				<li class="page-item" v-bind:class="[totalPages===currentPage ? 'disabled' :'']">
 					<a class="page-link" @click="loadNext()">Next</a>
 				</li>
 			</ul>
 		</nav>
-			
+	
 	</div>
 </div>
 {% endblock body %} 
