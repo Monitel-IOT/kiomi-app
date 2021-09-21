@@ -7,6 +7,7 @@ new Vue({
   data() {
     return {
       dbProductDetails: [],
+			imgPrincipal: 0,
 			dbOrderItem: {},
 			quantity: 0,
 			flavor: ''
@@ -60,7 +61,11 @@ new Vue({
 		*/
 		handleGoCart() {
 			LocalStorage.saveOrderItem(this.dbOrderItem)
-		}
+		},
+		changeImage(num) {
+      this.imgPrincipal = num;
+      // console.log(this.imgPrincipal);
+    },
 	}
 
 })
