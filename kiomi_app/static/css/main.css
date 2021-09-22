@@ -29,7 +29,7 @@ body {
 
 .thumbnail_images ul li {
   margin: 5px;
-  padding: 10px;
+  padding: 5px;
   border: 2px solid #eee;
   cursor: pointer;
   transition: all 0.5s;
