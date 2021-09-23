@@ -1,0 +1,44 @@
+{% extends 'index.html' %} 
+{% load static %} 
+{% block title %} Store {% endblock title %} 
+{% block body %}
+<div id="car">
+<h2>Carrrito de compras</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock body %} 
+{% block js %}
+    <!-- main vue -->
+    <script type="module" src="{% static 'js/components/car.js' %}"></script>
+    <!-- utils -->
+    <script type="module" src="{% static 'js/api.js' %}"></script>
+    <script type="module" src="{% static 'js/utils/LocalStorage.js' %}"></script>
+{% endblock js %}

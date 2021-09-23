@@ -25,6 +25,7 @@ body {
   display: flex;
   align-items: center;
   margin-top: 10px;
+  
 }
 
 .thumbnail_images ul li {
@@ -44,7 +45,6 @@ body {
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid #eee;
-  height: 400px;
   width: 100%;
   overflow: hidden;
 }
@@ -62,3 +62,4 @@ body {
   width: 150px;
   border-radius: 0px !important;
 }
+

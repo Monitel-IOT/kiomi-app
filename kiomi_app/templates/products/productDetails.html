@@ -48,26 +48,27 @@
 						<p>[[ dbProductDetails.description]]</p>
 					</div>
 					<h3>Precio: [[ dbProductDetails.price ]] S/.</h3>
-					<h3>Sabor: [[ dbProductDetails.flavor ]]</h3>
-					<div class="buttons d-flex flex-row mt-5 gap-3"><button class="btn btn-dark">Añadir a
-							carrito</button> </div>
-
+					<h3>Sabores: [[ dbProductDetails.flavor ]]</h3>	
+					<hr>				
+					<div>
+						<h4>Seleccionar Cantidad</h4>
+						<input class="form-control" aria-selected="true" type="number" name="" id="input-arrows-number" v-model="quantity" min="0" max="100">
+						<h4>Seleccionar Sabor</h4>
+						<select class="form-select form-select-lg mb-3"  name="select" id="select" v-model="flavor"  aria-selected="true">
+							<option value="default">default</option>
+							<option value="primero">primero</option>
+							<option value="segundo">segundo</option>
+							<option value="tercero">tercero</option>
+						</select>
+						<button class="btn btn-primary" @click="handleGoCart">Añadir al carrito</button>
+						<!-- <p>[[quantity]]</p>
+						<p>[[flavor]]</p> -->
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div>
-		<input type="number" name="" id="" v-model="quantity">
-		<select name="select" id="select" v-model="flavor">
-			<option value="default">default</option>
-			<option value="primero">primero</option>
-			<option value="segundo">segundo</option>
-			<option value="tercero">tercero</option>
-		</select>
-		<p>[[quantity]]</p>
-		<p>[[flavor]]</p>
-		<button @click="handleGoCart">Ir a carrito</button>
-	</div>
+	
 	<!-- /.row -->
 
 </div>
