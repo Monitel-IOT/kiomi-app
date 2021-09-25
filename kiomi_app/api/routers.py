@@ -13,7 +13,7 @@ router.register(
 )
 router.register(
 	r'products-detail', 
-	ProductDetailViewSet,
+  ProductDetailViewSet,
 	basename="products-details"
 )
 

@@ -1,8 +1,21 @@
-from products.models import Customer, Order, OrderItem, Product, ShippingAddress, CategoriaProd, Flavor, FlavorBizcocho, FlavorCoverage 
 from django.contrib import admin
 
+from products.models import (
+    CategoriaProd,
+    Customer,
+    Flavor,
+    FlavorBizcocho,
+    FlavorCoverage,
+    Order,
+    OrderItem,
+    Product,
+    ShippingAddress,
+)
+
+
 class FlavorAdmin(admin.ModelAdmin):
-	list_display = ('id', 'flavor')
+    list_display = ("id", "flavor")
+
 
 admin.site.register(Customer)
 admin.site.register(CategoriaProd)
