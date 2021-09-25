@@ -34,31 +34,65 @@ class CategoriaProd(models.Model):  # categoria del producto (galleta, torta, et
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=100)
-    price = models.FloatField()
-    description = models.CharField(max_length=1000)
-    categoria = models.ForeignKey(CategoriaProd, on_delete=models.CASCADE)
-    image_1 = models.ImageField(null=True, blank=True)
-    image_2 = models.ImageField(null=True, blank=True)
-    image_3 = models.ImageField(null=True, blank=True)
-    flavor = models.CharField(max_length=100)
+	""" 
+	Partes de un producto como cobertor, bizcocho, etc
+	"""
+	name = models.CharField(max_length=100)
+	price = models.FloatField()
+	description = models.CharField(max_length=1000)
+	categoria = models.ForeignKey(CategoriaProd, on_delete=models.CASCADE)
+	image_1 = models.ImageField(null=True, blank=True)
+	image_2 = models.ImageField(null=True, blank=True)
+	image_3 = models.ImageField(null=True, blank=True)
+	class Meta:
+		verbose_name = 'Product'
+		verbose_name_plural = 'Products'
+		ordering = ['name']
 
-    class Meta:
-        verbose_name = 'Product'
-        verbose_name_plural = 'Products'
-        ordering = ['name']
-
-    def __str__(self):
-        return self.name
-
-    # @property
-    # def imageURL(self):
-    #    try:
-    #        url = self.image.url
-    #    except:
-    #        url = ""
-    #    return url
-
+	def __str__(self) -> str:
+		return self.name
+class FlavorBizcocho(models.Model):
+	""" 
+	Sabores de los productos
+	"""
+	flavor = models.CharField('Sabor de bizcocho', max_length=50)
+	product = models.ForeignKey(
+		Product, 
+		on_delete=models.CASCADE,
+		related_name='flavorBizcocho',
+		blank=True,
+		null=True,
+	)
+	def __str__(self) -> str:
+			return self.flavor
+class FlavorCoverage(models.Model):
+	""" 
+	Sabores de los productos
+	"""
+	flavor = models.CharField('Sabor de cobertura', max_length=50)
+	product = models.ForeignKey(
+		Product, 
+		on_delete=models.CASCADE,
+		related_name='flavorCoverage',
+		blank=True,
+		null=True,
+	)
+	def __str__(self) -> str:
+			return self.flavor
+class Flavor(models.Model):
+	""" 
+	Sabores de los productos
+	"""
+	flavor = models.CharField('Sabor', max_length=50)
+	product = models.ForeignKey(
+		Product, 
+		on_delete=models.CASCADE,
+		related_name='flavor',
+		blank=True,
+		null=True,
+	)
+	def __str__(self) -> str:
+			return self.flavor
 
 class Order(models.Model):
     customer = models.ForeignKey(

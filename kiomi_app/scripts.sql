@@ -1,0 +1,2 @@
+/* Añadir Sabores */
+INSERT INTO products_flavor (flavor) VALUES ('Chocolate'), ('Vainilla'), ('Naranja'), ('Chocoavena'), ('Limon'), ('Crakelada'), ('Mermelada de Fresa'), ('Matcha Verde'), ('Naranja con Camote'), ('Manzana con Canela')
