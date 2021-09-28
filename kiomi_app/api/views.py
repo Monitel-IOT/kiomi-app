@@ -1,9 +1,11 @@
+import re
 from rest_framework.response import Response
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import status
 from products.models import Product
-from api.serializers import ProductSerializer
+from products.models import OrderItem
+from api.serializers import OrderItemSerializer, ProductSerializer
 
 from rest_framework.pagination import PageNumberPagination
 from rest_framework import mixins
@@ -37,3 +39,44 @@ class ProductDetailViewSet(viewsets.GenericViewSet):
     instance = self.get_object()
     serializer = self.get_serializer(instance)
     return Response(serializer.data)
+
+
+class OrderItemViewSet(
+    viewsets.GenericViewSet
+):
+  """
+  Lista de items que el cliente añadió a su carrito
+  """
+  queryset = OrderItem.objects.all()
+  serializer_class = OrderItemSerializer
+
+  def list(self, request, *args, **kwargs):
+    queryset = self.filter_queryset(self.get_queryset())
+    serializer = self.get_serializer(queryset, many=True)
+    return Response(serializer.data)
+
+  def retrieve(self, request, *args, **kwargs):
+    instance = self.get_object()
+    serializer = self.get_serializer(instance)
+    return Response(serializer.data)
+
+  def create(self, request, *args, **kwargs):
+    serializer = self.get_serializer(data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response(serializer.data)
+    return Response(serializer.errors)
+
+  def update(self, request, *args, **kwargs):
+    instance = self.get_object()
+    serializer = self.get_serializer(instance, data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response(serializer.data)
+    return Response(serializer.errors)
+
+  def delete(self, request, *args, **kwargs):
+    instance = self.get_object()
+    instance.delete()
+    return Response()
+######################

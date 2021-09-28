@@ -141,20 +141,26 @@ class OrderItem(models.Model):
   product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
   order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
   quantity = models.IntegerField(default=0, null=True, blank=True)
+  orderFlavorCoverage = models.ForeignKey(
+      FlavorCoverage, null=True, blank=True, on_delete=models.CASCADE)
+  orderFlavorBizcocho = models.ForeignKey(
+      FlavorBizcocho, null=True, blank=True, on_delete=models.CASCADE)
+  orderFlavor = models.ForeignKey(
+      Flavor, null=True, blank=True, on_delete=models.CASCADE)
   date_added = models.DateTimeField(auto_now_add=True)
 
-  class Meta:
-    verbose_name = "orderitem"
-    verbose_name_plural = "orderitems"
-    ordering = ["id"]
+  # class Meta:
+  #  verbose_name = "orderitem"
+  #  verbose_name_plural = "orderitems"
+  #  ordering = ["id"]
 
-  @property
-  def get_total(self):
-    total = self.product.price * self.quantity
-    return total
+  # @property
+  # def get_total(self):
+  #  total = self.product.price * self.quantity
+  #  return total
 
   def __str__(self):
-    return str(self.id)
+    return str(self.product)
 
 
 class ShippingAddress(models.Model):
