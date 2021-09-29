@@ -1,8 +1,18 @@
 {
 	"python.formatting.provider": "autopep8",
-	"python.formatting.autopep8Args": ["--indent-size=2"],
-	"python.linting.pylintArgs": ["--load-plugins", "pylint_django"],
+	"python.formatting.autopep8Args": [
+		"--indent-size=2"
+	],
+	"python.linting.pylintArgs": [
+		"--load-plugins",
+		"pylint_django",
+		"--disable=imported-auth-user",
+		"--django-settings-module=kiomi_app.settings"
+	],
 	"python.linting.pylintEnabled": true,
 	"python.linting.enabled": true,
-	"python.linting.pydocstyleArgs": ["--ignore=D400", "--ignore=D4"],
+	"python.linting.pydocstyleArgs": [
+		"--ignore=D400",
+		"--ignore=D4"
+	],
 }
