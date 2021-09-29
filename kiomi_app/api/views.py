@@ -1,14 +1,16 @@
-import re
-from rest_framework.response import Response
-from django.shortcuts import render
+""" rest framework api """
 from rest_framework import viewsets
+from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import mixins
+from rest_framework.pagination import PageNumberPagination
+
+from django.shortcuts import render
+
 from products.models import Product
 from products.models import OrderItem
 from api.serializers import OrderItemSerializer, ProductSerializer
 
-from rest_framework.pagination import PageNumberPagination
-from rest_framework import mixins
 
 
 class ProductViewSet(
