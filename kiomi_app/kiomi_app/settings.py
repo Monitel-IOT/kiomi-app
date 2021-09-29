@@ -113,7 +113,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.CursorPagination',
-    'PAGE_SIZE': 2
+    'PAGE_SIZE': 2,
+		'TEST_REQUEST_DEFAULT_FORMAT': 'json'
 }
 
 
