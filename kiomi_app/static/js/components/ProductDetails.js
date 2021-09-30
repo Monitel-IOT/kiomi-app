@@ -6,11 +6,22 @@ new Vue({
   el: "#product-details",
   data() {
     return {
-      dbProductDetails: [],
+     		dbProductDetails: [],
 			imgPrincipal: 0,
 			dbOrderItem: {},
 			quantity: 0,
-			flavor: ''
+			flavor: '',
+			flavorBizcocho:'',
+			flavorCobertura:'', 
+			categoria: 0,
+			orderItems: {
+				quantity: null,
+				product: null,
+				order: 1,
+				orderFlavorCoverage: null,
+				orderFlavorBizcocho: null,
+				orderFlavor: null
+			}
     }
   },
   created() {
@@ -19,7 +30,17 @@ new Vue({
 		*/
     api
       .getProductDetails(this.idDetails())
-      .then((product) => this.dbProductDetails = product)
+      .then((product) => {
+		  this.dbProductDetails = product
+		  this.flavor = product.flavor
+		  this.flavorBizcocho = product.flavorBizcocho
+		  this.flavorCoverage = product.flavorCoverage
+		  this.categoria=product.categoria
+		  this.orderItems.product = product.id
+		})
+	
+	
+
   },
 	watch: {
 		/*
@@ -36,6 +57,10 @@ new Vue({
 		}
 	},
 	methods: {
+		handleCreateOrderItem (){
+			console.log(this.orderItems);
+			api.postPorductOrderItems(this.orderItems)
+		},
 		/*
 		*	Obtener el id pasado como query parmas, 
 		*	de la url de la pagina actual.
