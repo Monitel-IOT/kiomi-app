@@ -32,9 +32,21 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
+
+  product = ProductSerializer(read_only=True)
+  orderFlavorCoverage = serializers.StringRelatedField(read_only=True)
+  orderFlavorBizcocho = serializers.StringRelatedField(read_only=True)
+  orderFlavor = serializers.StringRelatedField(read_only=True)
+
   class Meta:
     model = OrderItem
     fields = "__all__"
+
+  # def to_representation(self, instance):
+  #  rep = super().to_representation(instance)
+  #  rep['orderFlavorCoverage'] = FlavorCoverageSerializer(
+  #      instance.orderFlavorCoverage).data
+  #  return rep
 
   #  product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
   #order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)

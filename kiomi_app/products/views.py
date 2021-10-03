@@ -15,3 +15,8 @@ class StoreView(View):
 class ProductDetailsView(View):
   def get(self, request):
     return render(request, 'products/productDetails.html')
+
+
+class CarView(View):
+  def get(self, request):
+    return render(request, 'products/car.html')
