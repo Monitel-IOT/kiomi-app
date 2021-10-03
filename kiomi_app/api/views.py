@@ -9,8 +9,7 @@ from django.shortcuts import render
 
 from products.models import Product
 from products.models import OrderItem
-from api.serializers import OrderItemSerializer, ProductSerializer
-
+from api.serializers import OrderItemGetSerializer, OrderItemPostSerializer, ProductSerializer
 
 
 class ProductViewSet(
@@ -43,14 +42,14 @@ class ProductDetailViewSet(viewsets.GenericViewSet):
     return Response(serializer.data)
 
 
-class OrderItemViewSet(
+class OrderItemPostViewSet(
     viewsets.GenericViewSet
 ):
   """
-  Lista de items que el cliente añadió a su carrito
+  Lista de items que el cliente añadió a su carrito (usar para POST, UPDATE y DELETE)
   """
   queryset = OrderItem.objects.all()
-  serializer_class = OrderItemSerializer
+  serializer_class = OrderItemPostSerializer
 
   def list(self, request, *args, **kwargs):
     queryset = self.filter_queryset(self.get_queryset())
@@ -66,8 +65,8 @@ class OrderItemViewSet(
     serializer = self.get_serializer(data=request.data)
     if serializer.is_valid():
       serializer.save()
-      return Response(serializer.data)
-    return Response(serializer.errors)
+      return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
   def update(self, request, *args, **kwargs):
     instance = self.get_object()
@@ -75,10 +74,30 @@ class OrderItemViewSet(
     if serializer.is_valid():
       serializer.save()
       return Response(serializer.data)
-    return Response(serializer.errors)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
   def delete(self, request, *args, **kwargs):
     instance = self.get_object()
     instance.delete()
-    return Response()
+    return Response(status=status.HTTP_204_NO_CONTENT)
 ######################
+
+
+class OrderItemGetViewSet(
+    viewsets.GenericViewSet
+):
+  """
+  Lista de items que el cliente añadió a su carrito (usar para GET)
+  """
+  queryset = OrderItem.objects.all()
+  serializer_class = OrderItemGetSerializer
+
+  def list(self, request, *args, **kwargs):
+    queryset = self.filter_queryset(self.get_queryset())
+    serializer = self.get_serializer(queryset, many=True)
+    return Response(serializer.data)
+
+  def retrieve(self, request, *args, **kwargs):
+    instance = self.get_object()
+    serializer = self.get_serializer(instance)
+    return Response(serializer.data)

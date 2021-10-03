@@ -31,8 +31,14 @@ class ProductSerializer(serializers.ModelSerializer):
     fields = "__all__"
 
 
-class OrderItemSerializer(serializers.ModelSerializer):
+class OrderItemPostSerializer(serializers.ModelSerializer):
 
+  class Meta:
+    model = OrderItem
+    fields = "__all__"
+
+
+class OrderItemGetSerializer(serializers.ModelSerializer):
   product = ProductSerializer(read_only=True)
   orderFlavorCoverage = serializers.StringRelatedField(read_only=True)
   orderFlavorBizcocho = serializers.StringRelatedField(read_only=True)
