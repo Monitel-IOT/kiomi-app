@@ -20,3 +20,15 @@ class ProductDetailsView(View):
 class CarView(View):
   def get(self, request):
     return render(request, 'products/car.html')
+
+class AboutView(View):
+  def get(self, request):
+    return render(request, 'products/about.html')
+
+class HomeView(View):
+  def get(self, request):
+    return render(request, 'products/home.html')
+
+class ContactView(View):
+  def get(self, request):
+    return render(request, 'products/contact.html')
