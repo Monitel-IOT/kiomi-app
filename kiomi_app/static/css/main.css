@@ -1,3 +1,56 @@
+@font-face {
+  font-family: 'Stem-Bold';
+  src: url('../fonts/Stem-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Georgia-Italic';
+  src: url('../fonts/georgia-italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Times-Europa-Roman';
+  src: url('../fonts/times-europa-roman.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* *************** Custome Properties *************** */
+:root {
+	--first-color: #fe7d6d;
+	--second-color: #feb7be;
+	--third-color: #ffddb9;
+	--fourth-color: #f1f2f0;
+	--black-color: #000000;
+	--text-color: #290d18;
+	--font: 'Stem-Bold', sans-serif;
+	--second-font: 'Georgia-Italic', sans-serif;
+	--third-font: 'Times-Europa-Roman', sans-serif;
+}
+/* *************** Reset *************** */
+
+/* ********** Utils ********** */
+.bg-first-color {
+	background-color: var(--first-color);
+}
+
+.bg-second-color {
+	background-color: var(--second-color);
+}
+
+.bg-green {
+	background-color: #b0e0d9;
+}
+
+.bg-white {
+	background-color: #fff;
+}
+
+
 /* ********** Components ********** */
 
 /* Store Card Product component */
