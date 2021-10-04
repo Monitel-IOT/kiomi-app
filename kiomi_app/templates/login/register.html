@@ -1,0 +1,18 @@
+{% extends 'index.html' %} 
+{% load static %} 
+{% block title %} Inicio {% endblock title %} 
+{% block body %}
+<body>
+
+<form class="form" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+   <button type="submit" id="submit">Registrarse</button>
+
+<a type="submit" id="submit" href="/">login</a>
+</form>
+</body>
+{% endblock body %} 
+{% block js %} 
+{% endblock js %}

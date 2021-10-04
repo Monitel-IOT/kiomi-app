@@ -1,5 +1,8 @@
 from django.urls import path
 from products.views import StoreView, ProductDetailsView, CarView, AboutView, HomeView, ContactView
+#Importar para login, logout, register, welcome
+from products.views import welcome,register
+from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path('', HomeView.as_view(), name="home"),
@@ -8,4 +11,9 @@ urlpatterns = [
     path('car/', CarView.as_view(), name="car"),
     path('about/', AboutView.as_view(), name="about"),
     path('contact/', ContactView.as_view(), name="contact"),
+
+    path('welcome/', welcome, name="Welcome"),
+    path('register/', register, name="Register"),
+    path('login/', LoginView.as_view(template_name='login/login.html'), name="Login"),
+    path('logout/', LogoutView.as_view(template_name='login/logout.html'), name="Logout"),
 ]
