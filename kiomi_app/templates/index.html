@@ -78,10 +78,24 @@
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                         Login/Register/Logout
+                        </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="/login">Login</a></li>
+                        <li><a class="dropdown-item" href="/register">Register</a></li>
+                         <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                    </ul>
+                    </div>
+
+
+                    {% comment %} <a class="nav-icon position-relative text-decoration-none" href="#">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a>
+                    </a> {% endcomment %}
+
                 </div>
             </div>
 
