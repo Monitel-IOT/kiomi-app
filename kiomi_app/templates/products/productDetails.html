@@ -48,30 +48,24 @@
 					<div class="mt-2 pr-3 content">
 						<p>[[ dbProductDetails.description]]</p>
 					</div>
-					<h3>Precio: [[ dbProductDetails.price ]] S/.</h3>	
-					<hr>				
+					<h3>Precio: [[ dbProductDetails.price ]] S/.</h3>
+					<hr>
 					<div>
 						<h4>Seleccionar Cantidad</h4>
-						<input class="form-control" aria-selected="true" type="number" name="" id="input-arrows-number" v-model="orderItems.quantity" min="0" max="100">
+						<input class="form-control" aria-selected="true" type="number" name="" id="input-arrows-number"
+							v-model="orderItems.quantity" min="0" max="100">
 						<h4>Seleccionar Sabor de Bizcocho</h4>
-						<select class="form-select form-select-lg mb-3"  name="select" id="select" aria-selected="true" v-model="orderItems.orderFlavorBizcocho">
-							<option
-								v-for="flavor in flavorBizcocho"
-								:value="flavor.id" 
-								:key="flavor.id"
-																
-							>
-							[[flavor.flavor]]
+						<select class="form-select form-select-lg mb-3" name="select" id="select" aria-selected="true"
+							v-model="orderItems.orderFlavorBizcocho">
+							<option v-for="flavor in flavorBizcocho" :value="flavor.id" :key="flavor.id">
+								[[flavor.flavor]]
 							</option>
 						</select>
 						<h4>Seleccionar Sabor de Cobertura</h4>
-						<select class="form-select form-select-lg mb-3"  name="select" id="select" aria-selected="true" v-model="orderItems.orderFlavorCoverage">
-							<option
-								v-for="flavor in flavorCoverage"
-								:value="flavor.id" 
-								:key="flavor.id"							
-							>
-							[[flavor.flavor]]
+						<select class="form-select form-select-lg mb-3" name="select" id="select" aria-selected="true"
+							v-model="orderItems.orderFlavorCoverage">
+							<option v-for="flavor in flavorCoverage" :value="flavor.id" :key="flavor.id">
+								[[flavor.flavor]]
 							</option>
 						</select>
 						<button class="btn btn-primary" @click="handleCreateOrderItem">Añadir al carrito</button>
@@ -81,7 +75,7 @@
 
 		</div>
 	</div>
-	
+
 	<!-- /.row -->
 
 </div>
