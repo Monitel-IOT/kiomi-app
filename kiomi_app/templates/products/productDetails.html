@@ -78,6 +78,82 @@
 					</div>
 				</div>
 			</div>
+			<!-- si el producto es un queque -->
+			<div class="col-md-6" v-if="categoria===3">
+				<div class="p-3 right-side">
+					<div class="d-flex justify-content-between align-items-center">
+						<h2>[[ dbProductDetails.name ]]</h2>
+					</div>
+					<div class="mt-2 pr-3 content">
+						<p>[[ dbProductDetails.description]]</p>
+					</div>
+					<h3>Precio: [[ dbProductDetails.price ]] S/.</h3>	
+					<hr>				
+					<div>
+						<h4>Seleccionar Cantidad</h4>
+						<input class="form-control" aria-selected="true" type="number" name="" id="input-arrows-number" v-model="orderItems.quantity" min="0" max="100">
+						<h4>Seleccionar Sabor</h4>
+						<select class="form-select form-select-lg mb-3"  name="select" id="select" aria-selected="true" v-model="orderItems.orderFlavor">
+							<option
+								v-for="flavor in flavor"
+								:value="flavor.id" 
+								:key="flavor.id"
+																
+							>
+							[[flavor.flavor]]
+							</option>
+						</select>
+						<button class="btn btn-primary" @click="handleCreateOrderItem">Añadir al carrito</button>
+					</div>
+				</div>
+			</div>
+			<!-- si el producto es un brownie -->
+			<div class="col-md-6" v-if="categoria===4">
+				<div class="p-3 right-side">
+					<div class="d-flex justify-content-between align-items-center">
+						<h2>[[ dbProductDetails.name ]]</h2>
+					</div>
+					<div class="mt-2 pr-3 content">
+						<p>[[ dbProductDetails.description]]</p>
+					</div>
+					<h3>Precio: [[ dbProductDetails.price ]] S/.</h3>	
+					<hr>				
+					<div>
+						<h4>Seleccionar Cantidad</h4>
+						<input class="form-control" aria-selected="true" type="number" name="" id="input-arrows-number" v-model="orderItems.quantity" min="0" max="100">
+						<h4>Sabor</h4>
+						<select class="form-select form-select-lg mb-3"  name="select" id="select" aria-selected="true" v-model="orderItems.orderFlavor">
+							<option
+								v-for="flavor in flavor"
+								:value="flavor.id" 
+								:key="flavor.id"
+																
+							>
+							[[flavor.flavor]]
+							</option>
+						</select>
+						<button class="btn btn-primary" @click="handleCreateOrderItem">Añadir al carrito</button>
+					</div>
+				</div>
+			</div>
+			<!-- si el producto es un brownie -->
+			<div class="col-md-6" v-if="categoria===5">
+				<div class="p-3 right-side">
+					<div class="d-flex justify-content-between align-items-center">
+						<h2>[[ dbProductDetails.name ]]</h2>
+					</div>
+					<div class="mt-2 pr-3 content">
+						<p>[[ dbProductDetails.description]]</p>
+					</div>
+					<h3>Precio: [[ dbProductDetails.price ]] S/.</h3>	
+					<hr>				
+					<div>
+						<h4>Seleccionar Cantidad</h4>
+						<input class="form-control" aria-selected="true" type="number" name="" id="input-arrows-number" v-model="orderItems.quantity" min="0" max="100">
+						<button class="btn btn-primary" @click="handleCreateOrderItem">Añadir al carrito</button>
+					</div>
+				</div>
+			</div>
 
 		</div>
 	</div>

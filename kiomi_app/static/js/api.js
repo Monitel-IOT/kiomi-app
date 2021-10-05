@@ -23,7 +23,7 @@ const getOrderItems = () => {
 
 const postPorductOrderItems = (orderItems) => {
   const payload = JSON.stringify(orderItems);
-  const endpoint = `${url}/order-item/`;
+  const endpoint = `${url}/order-item-post/`;
   const csrfToken = Cookies.get("csrftoken");
   console.log(csrfToken);
   const headers = {

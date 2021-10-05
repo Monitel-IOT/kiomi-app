@@ -1,6 +1,6 @@
 {% extends 'index.html' %} 
 {% load static %} 
-{% block title %} Inicio {% endblock title %} 
+{% block title %} Login {% endblock title %} 
 {% block body %}
 
 <body>
@@ -9,10 +9,8 @@
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-       <button type="submit">Login</button>
+       <button type="submit" class="btn btn-primary">Login</button>
 </form>
-
-<a href="/register">Registrar usuario</a>
 </body>
 
 {% endblock body %} 
