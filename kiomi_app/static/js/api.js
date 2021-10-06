@@ -15,7 +15,7 @@ const getProductDetails = (id) => {
 };
 
 const getOrderItems = () => {
-  const endpoint = `${url}/order-item/`;
+  const endpoint = `${url}/order-item-get/`;
   return fetch(endpoint)
     .then((res) => res.json())
     .then((res) => res);
