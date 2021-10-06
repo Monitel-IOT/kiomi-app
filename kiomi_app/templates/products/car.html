@@ -13,8 +13,7 @@
                 <p> Sabor: [[orderItem.orderFlavor]]</p>
                 <p> Sabor-Cubierta: [[orderItem.orderFlavorCoverage]]</p>
                 <p> Sabor-Bizcocho: [[orderItem.orderFlavorBizcocho]]</p>
-        
-            </div> -->
+    </div> -->
     <section class="shopping-cart dark">
         <div class="container">
             <div class="block-heading">
@@ -24,96 +23,37 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-8">
                         <div class="items">
-                            <div class="product">
+                            <div v-for="orderItem in dbOrderItems" :key="orderItem.id" class="product">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <img class="img-fluid mx-auto d-block image"
-                                            src="https://image.spreadshirtmedia.net/image-server/v1/mp/compositions/T1267A1MPA3629PT17X212Y10D15446434FS5726Cx000000%3AxD41C3B%3AxE1E1E1/views/1,width=378,height=378,appearanceId=1,backgroundColor=FFFFFF,noPt=true/estoy-aqui-en-google-maps-camiseta-polo-mujer.jpg">
+                                        <img class="img-fluid mx-auto d-block image" :src="orderItem.product.image_1">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="info">
                                             <div class="row">
                                                 <div class="col-md-5 product-name">
                                                     <div class="product-name">
-                                                        <a href="#">Lorem Ipsum dolor</a>
+                                                        <h4> <u>[[orderItem.product.name]]</u></h4>
                                                         <div class="product-info">
-                                                            <div>Display: <span class="value">5 inch</span></div>
-                                                            <div>RAM: <span class="value">4GB</span></div>
-                                                            <div>Memory: <span class="value">32GB</span></div>
+                                                            <div>Sabor: <span
+                                                                    class="value">[[orderItem.orderFlavor]]</span></div>
+                                                            <div>Sabor Cobertura: <span
+                                                                    class="value">[[orderItem.orderFlavorCoverage]]</span>
+                                                            </div>
+                                                            <div>Sabor Bizcocho: <span
+                                                                    class="value">[[orderItem.orderFlavorBizcocho]]</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 quantity">
-                                                    <label for="quantity">Quantity:</label>
-                                                    <input id="quantity" type="number" value="1"
+                                                    <label for="quantity">Cantidad: </label>
+                                                    <input id="quantity" type="number" :value="orderItem.quantity"
                                                         class="form-control quantity-input">
                                                 </div>
                                                 <div class="col-md-3 price">
-                                                    <span>$120</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <img class="img-fluid mx-auto d-block image"
-                                            src="https://image.spreadshirtmedia.net/image-server/v1/mp/compositions/T1267A1MPA3629PT17X212Y10D15446434FS5726Cx000000%3AxD41C3B%3AxE1E1E1/views/1,width=378,height=378,appearanceId=1,backgroundColor=FFFFFF,noPt=true/estoy-aqui-en-google-maps-camiseta-polo-mujer.jpg">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="info">
-                                            <div class="row">
-                                                <div class="col-md-5 product-name">
-                                                    <div class="product-name">
-                                                        <a href="#">Lorem Ipsum dolor</a>
-                                                        <div class="product-info">
-                                                            <div>Display: <span class="value">5 inch</span></div>
-                                                            <div>RAM: <span class="value">4GB</span></div>
-                                                            <div>Memory: <span class="value">32GB</span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 quantity">
-                                                    <label for="quantity">Quantity:</label>
-                                                    <input id="quantity" type="number" value="1"
-                                                        class="form-control quantity-input">
-                                                </div>
-                                                <div class="col-md-3 price">
-                                                    <span>$120</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <img class="img-fluid mx-auto d-block image"
-                                            src="https://image.spreadshirtmedia.net/image-server/v1/mp/compositions/T1267A1MPA3629PT17X212Y10D15446434FS5726Cx000000%3AxD41C3B%3AxE1E1E1/views/1,width=378,height=378,appearanceId=1,backgroundColor=FFFFFF,noPt=true/estoy-aqui-en-google-maps-camiseta-polo-mujer.jpg">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="info">
-                                            <div class="row">
-                                                <div class="col-md-5 product-name">
-                                                    <div class="product-name">
-                                                        <a href="#">Lorem Ipsum dolor</a>
-                                                        <div class="product-info">
-                                                            <div>Display: <span class="value">5 inch</span></div>
-                                                            <div>RAM: <span class="value">4GB</span></div>
-                                                            <div>Memory: <span class="value">32GB</span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 quantity">
-                                                    <label for="quantity">Quantity:</label>
-                                                    <input id="quantity" type="number" value="1"
-                                                        class="form-control quantity-input">
-                                                </div>
-                                                <div class="col-md-3 price">
-                                                    <span>$120</span>
+                                                    Precio: <br>
+                                                    <span>27</span>
                                                 </div>
                                             </div>
                                         </div>
