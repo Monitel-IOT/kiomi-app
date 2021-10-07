@@ -14,5 +14,15 @@ new Vue({
     });
   },
 
-  methods: {},
+  methods: {
+    calcularSubTotal() {
+      let auxSubTotal = 0.0;
+      this.dbOrderItems.forEach(function (el, index) {
+        auxSubTotal += el.product.price * el.quantity;
+      });
+
+      this.subTotal = auxSubTotal.toFixed(2);
+      return this.subTotal;
+    },
+  },
 });

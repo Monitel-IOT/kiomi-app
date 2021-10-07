@@ -24,62 +24,78 @@
                     <div class="col-md-12 col-lg-8">
                         <div class="items">
                             <div v-for="orderItem in dbOrderItems" :key="orderItem.id" class="product">
-                                <div class="row">
+                                <div class="horizontal-line"></div>
+
+                                <div class="row align-items-center">
                                     <div class="col-md-3">
                                         <img class="img-fluid mx-auto d-block image" :src="orderItem.product.image_1">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="info">
-                                            <div class="row">
-                                                <div class="col-md-5 product-name">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-7 product-name">
                                                     <div class="product-name">
                                                         <h4> <u>[[orderItem.product.name]]</u></h4>
                                                         <div class="product-info">
                                                             <div>Sabor: <span
                                                                     class="value">[[orderItem.orderFlavor]]</span></div>
-                                                            <div>Sabor Cobertura: <span
-                                                                    class="value">[[orderItem.orderFlavorCoverage]]</span>
+                                                            <div>Sabor Cobertura: <span class="value">aaaaaaa:
+                                                                    [[orderItem.orderFlavorCoverage]]</span>
                                                             </div>
                                                             <div>Sabor Bizcocho: <span
                                                                     class="value">[[orderItem.orderFlavorBizcocho]]</span>
                                                             </div>
+
+
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4 quantity">
+                                                <div class="col-md-2 quantity">
+                                                    <br>
                                                     <label for="quantity">Cantidad: </label>
                                                     <input id="quantity" type="number" :value="orderItem.quantity"
                                                         class="form-control quantity-input">
                                                 </div>
-                                                <div class="col-md-3 price">
+                                                <div class="col-md-2 price">
                                                     Precio: <br>
-                                                    <span>27</span>
+                                                    <span>[[orderItem.product.price]] S/.</span>
+                                                </div>
+                                                <div class="col-md-1 quantity">
+                                                    <br>
+                                                    <button class="btn btn-danger btn-sm rounded-0" type="button"
+                                                        data-placement="top" title="Delete"><i
+                                                            class="fa fa-trash"></i></button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
+
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-4">
                         <div class="summary">
-                            <h3>Summary</h3>
-                            <div class="summary-item"><span class="text">Sub-Total</span><span class="price">$360</span>
+                            <h3>Resumen</h3>
+                            <div class="summary-item"><span class="text">Sub-Total</span><span
+                                    class="price">[[calcularSubTotal()]] S/.</span>
                             </div>
 
-                            <div class="summary-item"><span class="text">Ponga su cupon aqui <br>
+                            <div class="summary-item"><span class="text">Codigo de cupon<br>
                                     <div class="input-group mb-3"><input type="text" class="form-control"
-                                            placeholder="Recipient's username">
+                                            placeholder="Ponga su código aquí">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary" type="button">Button</button>
                                         </div>
                                     </div>
                                 </span>
                             </div>
-                            <div class="summary-item"><span class="text">Descuento</span><span class="price">-$0</span>
+                            <div class="summary-item"><span class="text">Descuento</span><span class="price">-0
+                                    S/.</span>
                             </div>
-                            <div class="summary-item"><span class="text">Total</span><span class="price">$360</span>
+                            <div class="summary-item"><span class="text">Total</span><span
+                                    class="price">[[calcularSubTotal()]] S/.</span>
                             </div>
                             <button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
                         </div>
