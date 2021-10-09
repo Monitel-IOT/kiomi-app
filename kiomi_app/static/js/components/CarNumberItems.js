@@ -1,11 +1,10 @@
 import api from "../api.js";
 new Vue({
   delimiters: ["[[", "]]"],
-  el: "#car",
+  el: "#car-number-items",
   data() {
     return {
       dbOrderItems: [],
-      subTotal: 0,
     };
   },
   created() {
@@ -15,18 +14,7 @@ new Vue({
   },
 
   methods: {
-    calcularSubTotal() {
-      let auxSubTotal = 0.0;
-      this.dbOrderItems.forEach(function (el, index) {
-        auxSubTotal += el.product.price * el.quantity;
-      });
-
-      this.subTotal = auxSubTotal.toFixed(2);
-      return this.subTotal;
-    },
-
     calcularNumItemsCarro() {
-      console.log("aaa");
       return this.dbOrderItems.length;
     },
   },

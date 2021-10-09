@@ -89,8 +89,8 @@
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="/car">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span
-                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                        <span id="car-number-items" v-if="calcularNumItemsCarro() != 0"
+                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">[[calcularNumItemsCarro()]]</span>
                     </a>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -242,6 +242,8 @@
     <script src="{% static 'js/jquery-migrate-1.2.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %} "></script>
     <script src="{% static 'js/templatemo.js' %}"></script>
+    <!-- main vue -->
+    <script type="module" src="{% static 'js/components/CarNumberItems.js' %}"></script>
 </body>
 
 </html>
