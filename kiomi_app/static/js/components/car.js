@@ -24,5 +24,10 @@ new Vue({
       this.subTotal = auxSubTotal.toFixed(2);
       return this.subTotal;
     },
+
+    calcularNumItemsCarro() {
+      console.log("hola");
+      return this.dbOrderItems.length;
+    },
   },
 });

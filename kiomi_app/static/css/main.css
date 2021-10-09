@@ -71,6 +71,10 @@ body {
   overflow: hidden;
 }
 
+.thumbnail_selected {
+  border: 1px solid #000;
+}
+
 .thumbnail_images ul {
   list-style: none;
   justify-content: center;
@@ -80,15 +84,14 @@ body {
 }
 
 .thumbnail_images ul li {
-  margin: 5px;
-  padding: 5px;
-  border: 2px solid #eee;
+  margin: 4px;
+  padding: 2px;
   cursor: pointer;
   transition: all 0.5s;
 }
 
 .thumbnail_images ul li:hover {
-  border: 2px solid #000;
+  border: 1px solid #000;
 }
 
 .main_image {

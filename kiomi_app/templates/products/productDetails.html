@@ -26,15 +26,31 @@
 						<img class="img-fluid" v-if="imgPrincipal===0" :src="dbProductDetails.image_1" width="400">
 						<img class="img-fluid" v-if="imgPrincipal===1" :src="dbProductDetails.image_2" width="400">
 						<img class="img-fluid" v-if="imgPrincipal===2" :src="dbProductDetails.image_3" width="400">
+						<img class="img-fluid" v-if="imgPrincipal===3" :src="dbProductDetails.image_4" width="400">
+						<img class="img-fluid" v-if="imgPrincipal===4" :src="dbProductDetails.image_5" width="400">
 					</div>
 					<div class="thumbnail_images">
 						<ul id="thumbnail">
-							<li><img class="img-fluid" @click="changeImage(0)" :src="dbProductDetails.image_1"
-									width="90"></li>
-							<li><img class="img-fluid" @click="changeImage(1)" :src="dbProductDetails.image_2"
-									width="90"></li>
-							<li><img class="img-fluid" @click="changeImage(2)" :src="dbProductDetails.image_3"
-									width="90"></li>
+							<li :class="{thumbnail_selected: imgPrincipal===0}" v-if="dbProductDetails.image_1"
+								@click="changeImage(0)">
+								<img class="img-fluid" :src="dbProductDetails.image_1" width="90">
+							</li>
+							<li :class="{thumbnail_selected: imgPrincipal===1}" v-if="dbProductDetails.image_2"
+								@click="changeImage(1)">
+								<img class="img-fluid" :src="dbProductDetails.image_2" width="90">
+							</li>
+							<li :class="{thumbnail_selected: imgPrincipal===2}" v-if="dbProductDetails.image_3"
+								@click="changeImage(2)">
+								<img class="img-fluid" :src="dbProductDetails.image_3" width="90">
+							</li>
+							<li :class="{thumbnail_selected: imgPrincipal===3}" v-if="dbProductDetails.image_4"
+								@click="changeImage(3)">
+								<img class="img-fluid" :src="dbProductDetails.image_4" width="90">
+							</li>
+							<li :class="{thumbnail_selected: imgPrincipal===4}" v-if="dbProductDetails.image_5"
+								@click="changeImage(4)">
+								<img class="img-fluid" :src="dbProductDetails.image_5" width="90">
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -81,20 +97,17 @@
 					<div class="mt-2 pr-3 content">
 						<p>[[ dbProductDetails.description]]</p>
 					</div>
-					<h3>Precio: [[ dbProductDetails.price ]] S/.</h3>	
-					<hr>				
+					<h3>Precio: [[ dbProductDetails.price ]] S/.</h3>
+					<hr>
 					<div>
 						<h4>Seleccionar Cantidad</h4>
-						<input class="form-control" aria-selected="true" type="number" name="" id="input-arrows-number" v-model="orderItems.quantity" min="0" max="100">
+						<input class="form-control" aria-selected="true" type="number" name="" id="input-arrows-number"
+							v-model="orderItems.quantity" min="0" max="100">
 						<h4>Seleccionar Sabor</h4>
-						<select class="form-select form-select-lg mb-3"  name="select" id="select" aria-selected="true" v-model="orderItems.orderFlavor">
-							<option
-								v-for="flavor in flavor"
-								:value="flavor.id" 
-								:key="flavor.id"
-																
-							>
-							[[flavor.flavor]]
+						<select class="form-select form-select-lg mb-3" name="select" id="select" aria-selected="true"
+							v-model="orderItems.orderFlavor">
+							<option v-for="flavor in flavor" :value="flavor.id" :key="flavor.id">
+								[[flavor.flavor]]
 							</option>
 						</select>
 						<button class="btn btn-primary" @click="handleCreateOrderItem">Añadir al carrito</button>
@@ -110,20 +123,17 @@
 					<div class="mt-2 pr-3 content">
 						<p>[[ dbProductDetails.description]]</p>
 					</div>
-					<h3>Precio: [[ dbProductDetails.price ]] S/.</h3>	
-					<hr>				
+					<h3>Precio: [[ dbProductDetails.price ]].toFixed(2) S/.</h3>
+					<hr>
 					<div>
 						<h4>Seleccionar Cantidad</h4>
-						<input class="form-control" aria-selected="true" type="number" name="" id="input-arrows-number" v-model="orderItems.quantity" min="0" max="100">
+						<input class="form-control" aria-selected="true" type="number" name="" id="input-arrows-number"
+							v-model="orderItems.quantity" min="0" max="100">
 						<h4>Sabor</h4>
-						<select class="form-select form-select-lg mb-3"  name="select" id="select" aria-selected="true" v-model="orderItems.orderFlavor">
-							<option
-								v-for="flavor in flavor"
-								:value="flavor.id" 
-								:key="flavor.id"
-																
-							>
-							[[flavor.flavor]]
+						<select class="form-select form-select-lg mb-3" name="select" id="select" aria-selected="true"
+							v-model="orderItems.orderFlavor">
+							<option v-for="flavor in flavor" :value="flavor.id" :key="flavor.id">
+								[[flavor.flavor]]
 							</option>
 						</select>
 						<button class="btn btn-primary" @click="handleCreateOrderItem">Añadir al carrito</button>
@@ -139,11 +149,12 @@
 					<div class="mt-2 pr-3 content">
 						<p>[[ dbProductDetails.description]]</p>
 					</div>
-					<h3>Precio: [[ dbProductDetails.price ]] S/.</h3>	
-					<hr>				
+					<h3>Precio: [[ dbProductDetails.price ]] S/.</h3>
+					<hr>
 					<div>
 						<h4>Seleccionar Cantidad</h4>
-						<input class="form-control" aria-selected="true" type="number" name="" id="input-arrows-number" v-model="orderItems.quantity" min="0" max="100">
+						<input class="form-control" aria-selected="true" type="number" name="" id="input-arrows-number"
+							v-model="orderItems.quantity" min="0" max="100">
 						<button class="btn btn-primary" @click="handleCreateOrderItem">Añadir al carrito</button>
 					</div>
 				</div>

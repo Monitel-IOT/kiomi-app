@@ -44,6 +44,8 @@ class Product(models.Model):
   image_1 = models.ImageField(null=True, blank=True)
   image_2 = models.ImageField(null=True, blank=True)
   image_3 = models.ImageField(null=True, blank=True)
+  image_4 = models.ImageField(null=True, blank=True)
+  image_5 = models.ImageField(null=True, blank=True)
 
   class Meta:
     verbose_name = "Product"
@@ -52,6 +54,10 @@ class Product(models.Model):
 
   def __str__(self) -> str:
     return self.name
+
+  def save(self, *args, **kwargs):
+    self.price = round(self.price, 2)
+    super(Product, self).save(*args, **kwargs)
 
 
 class FlavorBizcocho(models.Model):
