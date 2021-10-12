@@ -82,6 +82,9 @@ new Vue({
     handleGoCart() {
       LocalStorage.saveOrderItem(this.dbOrderItem);
     },
+
+    /* Funcion encargada de cambiar la variable imgPrincipal
+    Esta variable es usada para mostrar el thumbnail principal dinamico */
     changeImage(num) {
       this.imgPrincipal = num;
       // console.log(this.imgPrincipal);

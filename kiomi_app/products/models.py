@@ -1,6 +1,8 @@
 from django.db import models
 
 from django.contrib.auth.models import User
+# Validador para los campos integers, se uso en el model de orderitems
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Customer(models.Model):
@@ -146,7 +148,8 @@ class Order(models.Model):
 class OrderItem(models.Model):
   product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
   order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
-  quantity = models.IntegerField(default=0, null=True, blank=True)
+  quantity = models.PositiveIntegerField(
+      default=0, validators=[MinValueValidator(0), MaxValueValidator(99)], null=True, blank=True,)
   orderFlavorCoverage = models.ForeignKey(
       FlavorCoverage, null=True, blank=True, on_delete=models.CASCADE)
   orderFlavorBizcocho = models.ForeignKey(

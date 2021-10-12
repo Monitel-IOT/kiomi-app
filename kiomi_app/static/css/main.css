@@ -262,7 +262,9 @@ body {
 
 .shopping-cart .items .product .info .quantity .quantity-input {
   margin: auto;
-  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .shopping-cart .items .product .info .price {
@@ -333,4 +335,11 @@ body {
   background-color: rgb(122, 121, 121);
   opacity: 0.5;
   margin-left: 12px;
+}
+
+.boxed {
+  padding: auto;
+  width: 40px;
+  vertical-align: middle;
+  padding-top: 5px;
 }
