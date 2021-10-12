@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-8">
                         <div class="items">
-                            <div v-for="orderItem in dbOrderItems" :key="orderItem.id" class="product">
+                            <div v-for="(orderItem, indexArray) in dbOrderItems" :key="orderItem.id" class="product">
                                 <div class="horizontal-line"></div>
 
                                 <div class="row align-items-center">
@@ -33,16 +33,18 @@
                                     <div class="col-md-8">
                                         <div class="info">
                                             <div class="row align-items-center">
-                                                <div class="col-md-7 product-name">
+                                                <div class="col-md-5 product-name">
                                                     <div class="product-name">
                                                         <h4> <u>[[orderItem.product.name]]</u></h4>
                                                         <div class="product-info">
-                                                            <div>Sabor: <span
+                                                            <div v-if="orderItem.orderFlavor">Sabor: <span
                                                                     class="value">[[orderItem.orderFlavor]]</span></div>
-                                                            <div>Sabor Cobertura: <span class="value">aaaaaaa:
+                                                            <div v-if="orderItem.orderFlavorCoverage">Sabor Cobertura:
+                                                                <span class="value">
                                                                     [[orderItem.orderFlavorCoverage]]</span>
                                                             </div>
-                                                            <div>Sabor Bizcocho: <span
+                                                            <div v-if="orderItem.orderFlavorBizcocho">Sabor Bizcocho:
+                                                                <span
                                                                     class="value">[[orderItem.orderFlavorBizcocho]]</span>
                                                             </div>
 
@@ -50,21 +52,51 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2 quantity">
+                                                <div class="col-md-4 quantity">
                                                     <br>
                                                     <label for="quantity">Cantidad: </label>
-                                                    <input id="quantity" type="number" :value="orderItem.quantity"
-                                                        class="form-control quantity-input">
+                                                    <div class="input-group quantity-input">
+                                                        <span class="input-group-prepend">
+                                                            <button
+                                                                @click="updateItemQuantity(orderItem.quantity-1,indexArray,orderItem.id)"
+                                                                type="button"
+                                                                class="btn btn-outline-secondary btn-number btn-sm"
+                                                                :disabled="!canQuantityGoDown(orderItem.quantity)"
+                                                                data-type="minus" data-field="quant[1]">
+                                                                <span class="fa fa-minus"></span>
+                                                            </button>
+                                                        </span>
+                                                        <span class="boxed"><b>[[orderItem.quantity]]</b></span>
+                                                        <span class="input-group-append">
+                                                            <button
+                                                                @click="updateItemQuantity(orderItem.quantity+1,indexArray,orderItem.id)"
+                                                                type="button"
+                                                                class="btn btn-outline-secondary btn-number btn-sm"
+                                                                :disabled="!canQuantityGoUp(orderItem.quantity)"
+                                                                data-type="plus" data-field="quant[1]">
+                                                                <span class="fa fa-plus"></span>
+                                                            </button>
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-2 price">
-                                                    Precio: <br>
-                                                    <span>[[orderItem.product.price]] S/.</span>
-                                                </div>
-                                                <div class="col-md-1 quantity">
-                                                    <br>
-                                                    <button class="btn btn-danger btn-sm rounded-0" type="button"
-                                                        data-placement="top" title="Delete"><i
-                                                            class="fa fa-trash"></i></button>
+                                                <div class="col-md-3">
+                                                    <div class="row align-items-center">
+                                                        <span class="col-md-6 ms-auto">
+                                                            Importe:<br>
+                                                            <span>
+                                                                <b>[[(orderItem.product.price *
+                                                                    orderItem.quantity).toFixed(2)]]&nbsp;S/.</b></span>
+                                                        </span>
+                                                        <br>
+                                                        <span class="col-md-1 ms-auto">
+                                                            <br>
+                                                            <button class="btn btn-danger btn-sm rounded-0"
+                                                                type="button" data-placement="top" title="Delete"
+                                                                v-on:click="deleteItem(orderItem.id)"><i
+                                                                    class="fa fa-trash"></i></button>
+                                                        </span>
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -78,7 +110,7 @@
                     <div class="col-md-12 col-lg-4">
                         <div class="summary">
                             <h3>Resumen</h3>
-                            <div class="summary-item"><span class="text">Sub-Total</span><span
+                            <div class="summary-item"><span class="text">Importe Sub-Total</span><span
                                     class="price">[[calcularSubTotal()]] S/.</span>
                             </div>
 
@@ -97,7 +129,8 @@
                             <div class="summary-item"><span class="text">Total</span><span
                                     class="price">[[calcularSubTotal()]] S/.</span>
                             </div>
-                            <button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
+                            <button type="button" class="btn btn-primary btn-lg btn-block">Ir a
+                                pagar</button>
                         </div>
                     </div>
                 </div>

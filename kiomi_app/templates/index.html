@@ -22,6 +22,7 @@
 </head>
 
 <body>
+
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
         <div class="container text-light">
@@ -89,8 +90,9 @@
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="/car">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span id="car-number-items" v-if="calcularNumItemsCarro() != 0"
-                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">[[calcularNumItemsCarro()]]</span>
+                        <span id="car-number-items" v-if="numItemscarro != 0"
+                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"
+                            :key="numItemscarro">[[numItemscarro]]</span>
                     </a>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -231,6 +233,9 @@
         </div>
 
     </footer>
+
+
+
 
     {% block js %}
     {% endblock js %}

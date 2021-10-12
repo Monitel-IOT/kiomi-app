@@ -5,17 +5,28 @@ new Vue({
   data() {
     return {
       dbOrderItems: [],
+      numItemscarro: 0,
     };
   },
   created() {
     api.getOrderItems().then((orderitems) => {
       this.dbOrderItems = orderitems;
+      this.numItemscarro = orderitems.length;
     });
+  },
+
+  watch: {
+    // whenever question changes, this function will run
+    dbOrderItems() {
+      this.calcularNumItemsCarro();
+    },
   },
 
   methods: {
     calcularNumItemsCarro() {
-      return this.dbOrderItems.length;
+      let auxNumItems = this.dbOrderItems.length;
+      this.numItemscarro = auxNumItems;
+      return auxNumItems;
     },
   },
 });
