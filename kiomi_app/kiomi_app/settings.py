@@ -152,7 +152,8 @@ MEDIA_URL = '/images/'
 # url for images
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
-
+LOGIN_REDIRECT_URL = "http://127.0.0.1:8000/"
+LOGIN_URL ="http://127.0.0.1:8000/login"
 # Esto corrige un problema del browser que no permite el tipo MIME ("text/plain"):
 # Referencia: https://stackoverflow.com/questions/64013643/failed-to-load-module-script-the-server-responded-with-a-non-javascript-mime-ty
 if DEBUG:

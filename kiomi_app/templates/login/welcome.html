@@ -3,6 +3,7 @@
 {% block title %} Inicio {% endblock title %} 
 {% block body %}
 <body>
+{% csrf_token %}
 {%  if messages %}
     {% for message in messages %}
         <p>
@@ -13,11 +14,12 @@
 <h2>Área para miembros</h2>
 
 <p>
+  
     Bienvenido <b>{{message.username}}</b>,
     esta página es exclusiva para usuarios registrados.
 </p>
 
-<hr />
+<hr/>
 <a href="/">logout</a>
 </body>
 {% endblock body %} 

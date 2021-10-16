@@ -7,7 +7,8 @@ from api.serializers import ProductSerializer
 # import login register tools
 from django.contrib import messages
 from .form import UserRegisterForm
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 
@@ -21,7 +22,7 @@ class ProductDetailsView(View):
     return render(request, 'products/productDetails.html')
 
 
-class CarView(View):
+class CarView(LoginRequiredMixin,View):
   def get(self, request):
     return render(request, 'products/car.html')
 
