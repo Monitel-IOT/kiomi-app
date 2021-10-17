@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'products'
+    'products',
 ]
 
 MIDDLEWARE = [
@@ -114,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.CursorPagination',
     'PAGE_SIZE': 2,
-		'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
 }
 
 
@@ -156,5 +156,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 # Esto corrige un problema del browser que no permite el tipo MIME ("text/plain"):
 # Referencia: https://stackoverflow.com/questions/64013643/failed-to-load-module-script-the-server-responded-with-a-non-javascript-mime-ty
 if DEBUG:
-    import mimetypes
-    mimetypes.add_type("application/javascript", ".js", True)
+  import mimetypes
+  mimetypes.add_type("application/javascript", ".js", True)

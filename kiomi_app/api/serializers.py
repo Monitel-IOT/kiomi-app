@@ -1,6 +1,6 @@
 from django.db.models import fields
 from rest_framework import serializers
-from products.models import Order, Product, Flavor, FlavorCoverage, FlavorBizcocho, OrderItem
+from products.models import Order, Product, Flavor, FlavorCoverage, FlavorBizcocho, OrderItem, OrderFlavorCookies
 
 
 class FlavorSerializer(serializers.ModelSerializer):
@@ -31,7 +31,14 @@ class ProductSerializer(serializers.ModelSerializer):
     fields = "__all__"
 
 
+class OrderFlavorCookiesSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = OrderFlavorCookies
+    fields = "__all__"
+
+
 class OrderItemPostSerializer(serializers.ModelSerializer):
+  orderFlavorCookies = OrderFlavorCookiesSerializer(many=True, read_only=True)
 
   class Meta:
     model = OrderItem
@@ -43,6 +50,7 @@ class OrderItemGetSerializer(serializers.ModelSerializer):
   orderFlavorCoverage = serializers.StringRelatedField(read_only=True)
   orderFlavorBizcocho = serializers.StringRelatedField(read_only=True)
   orderFlavor = serializers.StringRelatedField(read_only=True)
+  orderFlavorCookies = OrderFlavorCookiesSerializer(many=True, read_only=True)
 
   class Meta:
     model = OrderItem
