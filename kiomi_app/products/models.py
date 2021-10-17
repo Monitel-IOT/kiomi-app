@@ -151,11 +151,11 @@ class OrderItem(models.Model):
   quantity = models.PositiveIntegerField(
       default=0, validators=[MinValueValidator(0), MaxValueValidator(99)], null=True, blank=True,)
   orderFlavorCoverage = models.ForeignKey(
-      FlavorCoverage, null=True, blank=True, on_delete=models.CASCADE)
+      FlavorCoverage, null=True, blank=True, on_delete=models.SET_NULL)
   orderFlavorBizcocho = models.ForeignKey(
-      FlavorBizcocho, null=True, blank=True, on_delete=models.CASCADE)
+      FlavorBizcocho, null=True, blank=True, on_delete=models.SET_NULL)
   orderFlavor = models.ForeignKey(
-      Flavor, null=True, blank=True, on_delete=models.CASCADE)
+      Flavor, null=True, blank=True, on_delete=models.SET_NULL)
   date_added = models.DateTimeField(auto_now_add=True)
 
   # class Meta:
@@ -170,6 +170,31 @@ class OrderItem(models.Model):
 
   def __str__(self):
     return str(self.product)
+
+
+class OrderFlavorCookies(models.Model):
+  """
+  Clase especialmente creada para poder mostrar sabores y 
+  cantidades de GALLETAS en la tabla de orderitems
+  """
+
+  orderFlavor = models.ForeignKey(
+      Flavor, related_name="orderFlavorCookies",
+      null=True, blank=True,
+      on_delete=models.CASCADE)
+  quantity = models.PositiveIntegerField(
+      default=6,
+      validators=[MinValueValidator(6),
+                  MaxValueValidator(36)],
+      null=True,
+      blank=True,)
+  orderItem = models.ForeignKey(
+      OrderItem,
+      related_name="orderFlavorCookies",
+      on_delete=models.CASCADE)
+
+  def __str__(self):
+    return str(self.orderItem)
 
 
 class ShippingAddress(models.Model):

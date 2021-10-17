@@ -1,14 +1,15 @@
 from django.contrib import admin
 
 from products.models import (
-  CategoriaProd,
-  Customer,
-  Flavor,
-  FlavorBizcocho,
-  FlavorCoverage,
-  Order, OrderItem,
-  Product,
-  ShippingAddress
+    CategoriaProd,
+    Customer,
+    Flavor,
+    FlavorBizcocho,
+    FlavorCoverage,
+    Order, OrderItem,
+    Product,
+    ShippingAddress,
+    OrderFlavorCookies,
 )
 
 
@@ -26,4 +27,5 @@ admin.site.register(Product)
 
 admin.site.register(Order)
 admin.site.register(OrderItem)
+admin.site.register(OrderFlavorCookies)
 admin.site.register(ShippingAddress)
